@@ -1,0 +1,19 @@
+# E3. Noisy auditors. Subagents misreport 15% of what they read and report often, so the delegated
+# class matters. The biased judge is sharp on most beliefs but misses 90% of stale subagent
+# reports. Trusting it (judge threshold, judge-only certification) breaks the guarantee where it
+# is blind; using it to rectify (PPI) or to direct audits keeps the guarantee whatever its quality.
+name: e3_judges
+alpha: 0.05
+burn_in_days: 10
+seeds: 10
+world: {days: 60, subagent_error: 0.15, subagent_reports_per_day: 80}
+arms:
+  - {name: certified-exact, policy: {type: certified, alpha: 0.05}}
+  - {name: ppi-calibrated, policy: {type: certified, alpha: 0.05, use_judge: true}, judge: {type: calibrated, sigma: 0.1}}
+  - {name: guided-calibrated, policy: {type: certified, alpha: 0.05, use_judge: true, judge_audit_gain: 0.9}, judge: {type: calibrated, sigma: 0.1}}
+  - {name: ppi-biased, policy: {type: certified, alpha: 0.05, use_judge: true}, judge: {type: biased, eps: 0.01, soft: 0.01}}
+  - {name: guided-biased, policy: {type: certified, alpha: 0.05, use_judge: true, judge_audit_gain: 0.9}, judge: {type: biased, eps: 0.01, soft: 0.01}}
+  - {name: guided-flip-0.3, policy: {type: certified, alpha: 0.05, use_judge: true, judge_audit_gain: 0.9}, judge: {type: flip, eps: 0.3, eps_stale: 0.3, soft: 0.01}}
+  - {name: judge-only-cert-biased, policy: {type: certified, alpha: 0.05, judge_only: true}, judge: {type: biased, eps: 0.01, soft: 0.01}}
+  - {name: judge-threshold-biased, policy: {type: judge, theta: 0.5}, judge: {type: biased, eps: 0.01, soft: 0.01}}
+  - {name: hazard-0.01, policy: {type: hazard, theta: 0.01}}

@@ -1,0 +1,23 @@
+# E2. What does the guarantee cost? Re-check cost against error for certified policies at several
+# alphas, fixed time-to-live rules and fixed staleness thresholds.
+name: e2_frontier
+alpha: 0.05
+burn_in_days: 10
+seeds: 10
+world: {days: 60}
+arms:
+  - {name: cert-0.01, policy: {type: certified, alpha: 0.01}}
+  - {name: cert-0.02, policy: {type: certified, alpha: 0.02}}
+  - {name: cert-0.05, policy: {type: certified, alpha: 0.05}}
+  - {name: cert-0.10, policy: {type: certified, alpha: 0.10}}
+  - {name: ttl-0.25d, policy: {type: ttl, days: 0.25}}
+  - {name: ttl-1d, policy: {type: ttl, days: 1}}
+  - {name: ttl-4d, policy: {type: ttl, days: 4}}
+  - {name: hazard-0.01, policy: {type: hazard, theta: 0.01}}
+  - {name: hazard-0.05, policy: {type: hazard, theta: 0.05}}
+  - {name: hazard-0.2, policy: {type: hazard, theta: 0.2}}
+  - {name: aci-0.01, policy: {type: aci, alpha: 0.01}}
+  - {name: aci-0.025, policy: {type: aci, alpha: 0.025}}
+  - {name: aci-0.05, policy: {type: aci, alpha: 0.05}}
+  - {name: cert-0.05-audit-0.03, policy: {type: certified, alpha: 0.05, pi_audit: 0.03}}
+  - {name: cert-0.05-audit-0.3, policy: {type: certified, alpha: 0.05, pi_audit: 0.3}}

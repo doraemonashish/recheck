@@ -1,0 +1,8 @@
+arm,seeds,alpha,error_mean,error_p95,seeds_over_alpha,seeds_any_group_over_alpha,cost_vs_always,served_from_memory
+provenance-certified,10,0.05,0.0240,0.0318,0.00,0.00,0.387,0.652
+blind-certified,10,0.05,0.0186,0.0219,0.00,0.00,0.487,0.579
+blind-certified-pooled,10,0.05,0.0250,0.0358,0.00,1.00,0.642,0.403
+blind-aci-0.05-pooled,10,0.05,0.0414,0.0482,0.00,1.00,0.545,0.503
+blind-hazard-0.05,10,0.05,0.0183,0.0238,0.00,1.00,0.667,0.380
+provenance-hazard-0.05,10,0.05,0.0137,0.0236,0.00,0.40,0.388,0.637
+blind-ttl-1d,10,0.05,0.1585,0.1805,1.00,1.00,0.268,0.772

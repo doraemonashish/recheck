@@ -1,0 +1,13 @@
+# E8. The chatbot special case: only the user can tell (re-checking means asking, cost 3), facts
+# change slowly. Certification should serve almost everything from memory here.
+name: e8_chatbot
+alpha: 0.05
+burn_in_days: 10
+seeds: 10
+world: {days: 120, domains: [user, org], queries_per_day: 60, subagent_reports_per_day: 0, user_statements_per_day: 3}
+arms:
+  - {name: certified, policy: {type: certified, alpha: 0.05}}
+  - {name: aci-0.05, policy: {type: aci, alpha: 0.05}}
+  - {name: ttl-7d, policy: {type: ttl, days: 7}}
+  - {name: ttl-30d, policy: {type: ttl, days: 30}}
+  - {name: never-recheck, policy: {type: never}}

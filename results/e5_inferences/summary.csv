@@ -1,0 +1,6 @@
+arm,seeds,alpha,error_mean,error_p95,seeds_over_alpha,seeds_any_group_over_alpha,cost_vs_always,served_from_memory
+justified-boole,10,0.05,0.0226,0.0296,0.00,0.00,0.417,0.611
+justified-product,10,0.05,0.0208,0.0284,0.00,0.00,0.420,0.610
+laundered-certified,10,0.05,0.0215,0.0288,0.00,0.00,0.440,0.579
+laundered-never,10,0.05,0.4827,0.5481,1.00,1.00,0.000,1.000
+justified-never,10,0.05,0.3414,0.4053,1.00,1.00,0.022,0.984

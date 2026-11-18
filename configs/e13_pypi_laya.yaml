@@ -1,0 +1,13 @@
+# E13 (needs a model). Real PyPI traces with Laya as a System One judge. Run from
+# notebooks/03_laya.ipynb after E10.
+name: e13_pypi_laya
+needs_model: true
+alpha: 0.05
+burn_in_days: 20
+seeds: 3
+world: {source: pypi, start: "2022-01-01", days: 180, queries_per_day: 40, subagent_reports_per_day: 5, subagent_error: 0.05}
+arms:
+  - {name: certified, policy: {type: certified, alpha: 0.05}, memory: {per_slot: true}}
+  - {name: ppi-laya, policy: {type: certified, alpha: 0.05, use_judge: true}, judge: {type: laya, device: cuda}, memory: {per_slot: true}}
+  - {name: guided-laya, policy: {type: certified, alpha: 0.05, use_judge: true, judge_audit_gain: 0.9}, judge: {type: laya, device: cuda}, memory: {per_slot: true}}
+  - {name: judge-threshold-laya, policy: {type: judge, theta: 0.5}, judge: {type: laya, device: cuda}, memory: {per_slot: true}}

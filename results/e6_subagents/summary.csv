@@ -1,0 +1,5 @@
+arm,seeds,alpha,error_mean,error_p95,seeds_over_alpha,seeds_any_group_over_alpha,cost_vs_always,served_from_memory
+obs-time-certified,10,0.05,0.0211,0.0266,0.00,0.00,0.386,0.656
+write-time-certified,10,0.05,0.0189,0.0264,0.00,0.00,0.424,0.611
+obs-time-never,10,0.05,0.2481,0.3255,1.00,1.00,0.032,0.982
+write-time-never,10,0.05,0.2545,0.3295,1.00,1.00,0.054,0.969

@@ -1,0 +1,15 @@
+# E9 (needs a model). An LLM through Ollama as the judge, and as an agent deciding on its own
+# whether to re-check. Run on a laptop, Colab or Kaggle (notebooks/02_ollama.ipynb). A small world
+# keeps it to a few thousand calls.
+name: e9_llm_ollama
+needs_model: true
+alpha: 0.05
+burn_in_days: 3
+seeds: 2
+world: {days: 15, entities_per_kind: 6, queries_per_day: 60, subagent_reports_per_day: 8}
+arms:
+  - {name: certified-exact, policy: {type: certified, alpha: 0.05}}
+  - {name: ppi-llm, policy: {type: certified, alpha: 0.05, use_judge: true}, judge: {type: llm, max_calls: 1500}}
+  - {name: judge-threshold-llm, policy: {type: judge, theta: 0.5}, judge: {type: llm, max_calls: 1500}}
+  - {name: agent-probe-plain, policy: {type: certified, alpha: 0.05}, probe: {show_certificate: false, max_calls: 300}, probe_every: 3}
+  - {name: agent-probe-certificate, policy: {type: certified, alpha: 0.05}, probe: {show_certificate: true, max_calls: 300}, probe_every: 3}

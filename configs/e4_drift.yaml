@@ -1,0 +1,18 @@
+# E4. The world speeds up at day 30: four kinds start changing six times as often. The alarm
+# should catch it and recertify; a batch certificate and an unmonitored one should not.
+name: e4_drift
+alpha: 0.05
+burn_in_days: 10
+seeds: 10
+world:
+  days: 60
+  drift: {at_day: 30, factor: 6.0, kinds: [product.price, ticket.status, branch.head, file.config]}
+arms:
+  - {name: certified, policy: {type: certified, alpha: 0.05}}
+  - {name: certified-noalarm, policy: {type: certified, alpha: 0.05, alarm: false}}
+  - {name: ltt-batch, policy: {type: ltt, alpha: 0.05, n_calib: 2000}}
+  - {name: aci-0.05, policy: {type: aci, alpha: 0.05}}
+  - {name: aci-0.025, policy: {type: aci, alpha: 0.025}}
+  - {name: hazard-0.05, policy: {type: hazard, theta: 0.05}}
+  - {name: ttl-1d, policy: {type: ttl, days: 1}}
+windows: {before_drift: [10, 30], after_drift: [30, 60], last_two_weeks: [46, 60]}

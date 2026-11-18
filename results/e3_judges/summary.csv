@@ -1,0 +1,10 @@
+arm,seeds,alpha,error_mean,error_p95,seeds_over_alpha,seeds_any_group_over_alpha,cost_vs_always,served_from_memory
+certified-exact,10,0.05,0.0195,0.0266,0.00,0.00,0.400,0.610
+ppi-calibrated,10,0.05,0.0237,0.0319,0.00,0.00,0.396,0.618
+guided-calibrated,10,0.05,0.0263,0.0303,0.00,0.00,0.394,0.628
+ppi-biased,10,0.05,0.0252,0.0320,0.00,0.00,0.380,0.637
+guided-biased,10,0.05,0.0042,0.0058,0.00,0.00,0.278,0.726
+guided-flip-0.3,10,0.05,0.0101,0.0121,0.00,0.00,0.512,0.507
+judge-only-cert-biased,10,0.05,0.0223,0.0280,0.00,0.90,0.440,0.556
+judge-threshold-biased,10,0.05,0.0749,0.0833,1.00,1.00,0.087,0.929
+hazard-0.01,10,0.05,0.0014,0.0044,0.00,0.00,0.633,0.291

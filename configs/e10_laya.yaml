@@ -1,0 +1,13 @@
+# E10 (needs a model). Laya as a System One staleness judge on a Kaggle or Colab T4
+# (notebooks/03_laya_kaggle.ipynb).
+name: e10_laya
+needs_model: true
+alpha: 0.05
+burn_in_days: 3
+seeds: 3
+world: {days: 20, entities_per_kind: 8, queries_per_day: 80, subagent_error: 0.10}
+arms:
+  - {name: certified-exact, policy: {type: certified, alpha: 0.05}}
+  - {name: ppi-laya, policy: {type: certified, alpha: 0.05, use_judge: true}, judge: {type: laya, device: cuda}}
+  - {name: ppi-guided-laya, policy: {type: certified, alpha: 0.05, use_judge: true, judge_audit_gain: 0.9}, judge: {type: laya, device: cuda}}
+  - {name: judge-threshold-laya, policy: {type: judge, theta: 0.5}, judge: {type: laya, device: cuda}}

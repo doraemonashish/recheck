@@ -1,0 +1,17 @@
+# E7. Pasted content. Thirty untrusted claims a day (documents, web pages, tool output that quotes
+# something). A provenance-blind memory files them like statements from the user. Grouped
+# certification contains the damage to the class they land in; pooled certification and fixed
+# rules serve them.
+name: e7_injection
+alpha: 0.05
+burn_in_days: 10
+seeds: 10
+world: {days: 60, quoted_claims_per_day: 30}
+arms:
+  - {name: provenance-certified, policy: {type: certified, alpha: 0.05}}
+  - {name: blind-certified, policy: {type: certified, alpha: 0.05}, memory: {trust_quoted: true}}
+  - {name: blind-certified-pooled, policy: {type: certified, alpha: 0.05, by_group: false}, memory: {trust_quoted: true}}
+  - {name: blind-aci-0.05-pooled, policy: {type: aci, alpha: 0.05, by_group: false}, memory: {trust_quoted: true}}
+  - {name: blind-hazard-0.05, policy: {type: hazard, theta: 0.05}, memory: {trust_quoted: true}}
+  - {name: provenance-hazard-0.05, policy: {type: hazard, theta: 0.05}}
+  - {name: blind-ttl-1d, policy: {type: ttl, days: 1}, memory: {trust_quoted: true}}
